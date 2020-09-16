@@ -92,7 +92,7 @@ describe "CSV and Enumerables Exercise" do
     end
   end
 
-  xdescribe 'get_all_gold_medalists' do
+  describe 'get_all_gold_medalists' do
     
     it 'returns an array of gold medalists' do
       # Arrange
@@ -121,4 +121,17 @@ describe "CSV and Enumerables Exercise" do
     end
   end
 
+  describe "find team with the most medals" do
+
+    it 'should return a hash of the correct team and count' do
+
+      data = total_medals_per_team(get_all_olympic_athletes(OLYMPIC_DATA_FILENAME))
+
+      most_medals = team_with_most_medals(data)
+
+      expect(most_medals).must_be_instance_of Hash
+      expect(most_medals['Team']).must_equal 'United States'
+      expect(most_medals['Count']).must_equal 944
+    end
+  end
 end
